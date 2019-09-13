@@ -1,0 +1,10 @@
+{% block menu %}
+    <a href="{{ path('index') }}">Home</a>
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('album_index') }}">Album</a>
+        <a href="{{ path('gif_index') }}">Gif</a>
+        <a href="{{ path('app_logout') }}">Deconnexion</a>
+    {% else %}
+        <a href="{{ path('app_login') }}">Connexion</a>
+    {% endif %}
+{% endblock %}
