@@ -20,6 +20,8 @@ class GifController extends AbstractController
 {
     /**
      * @Route("/", name="gif_index", methods={"GET"})
+     * @param GifRepository $gifRepository
+     * @return Response
      */
     public function index(GifRepository $gifRepository): Response
     {
@@ -30,6 +32,8 @@ class GifController extends AbstractController
 
     /**
      * @Route("/new", name="gif_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -53,6 +57,8 @@ class GifController extends AbstractController
 
     /**
      * @Route("/{id}", name="gif_show", methods={"GET"})
+     * @param Gif $gif
+     * @return Response
      */
     public function show(Gif $gif): Response
     {
@@ -63,6 +69,9 @@ class GifController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="gif_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Gif $gif
+     * @return Response
      */
     public function edit(Request $request, Gif $gif): Response
     {
@@ -83,6 +92,10 @@ class GifController extends AbstractController
 
     /**
      * @Route("/{id}/addfavorite", name="gif_addfavorite")
+     * @param Gif $gif
+     * @param UserRepository $userRepository
+     * @param TokenStorageInterface $token
+     * @return Response
      */
     public function addfavorite(Gif $gif,UserRepository$userRepository,TokenStorageInterface $token): Response
     {
@@ -96,8 +109,13 @@ class GifController extends AbstractController
         }
         return $this->redirectToRoute('album_index');
     }
+
     /**
      * @Route("/{id}/deletefavorite", name="gif_deletefavorite")
+     * @param Gif $gif
+     * @param UserRepository $userRepository
+     * @param TokenStorageInterface $token
+     * @return Response
      */
     public function deletefavorite(Gif $gif,UserRepository$userRepository,TokenStorageInterface $token): Response
     {
@@ -111,8 +129,12 @@ class GifController extends AbstractController
         }
         return $this->redirectToRoute('album_index');
     }
+
     /**
      * @Route("/{id}", name="gif_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Gif $gif
+     * @return Response
      */
     public function delete(Request $request, Gif $gif): Response
     {

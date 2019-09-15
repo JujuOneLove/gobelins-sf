@@ -19,6 +19,10 @@ class AlbumController extends AbstractController
 {
     /**
      * @Route("/", name="album_index", methods={"GET"})
+     * @param AlbumRepository $albumRepository
+     * @param UserRepository $userRepository
+     * @param TokenStorageInterface $token
+     * @return Response
      */
     public function index(AlbumRepository $albumRepository, UserRepository$userRepository,TokenStorageInterface $token): Response
     {
@@ -30,6 +34,8 @@ class AlbumController extends AbstractController
 
     /**
      * @Route("/new", name="album_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -53,6 +59,8 @@ class AlbumController extends AbstractController
 
     /**
      * @Route("/{id}", name="album_show", methods={"GET"})
+     * @param Album $album
+     * @return Response
      */
     public function show(Album $album): Response
     {
@@ -63,6 +71,9 @@ class AlbumController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="album_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Album $album
+     * @return Response
      */
     public function edit(Request $request, Album $album): Response
     {

@@ -22,7 +22,7 @@ class Gif
     /**
      *
      * @Assert\Url
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
      */
     private $link;
 
@@ -36,7 +36,7 @@ class Gif
      *      min = 3,
      *      minMessage = "Minimum 3 carractères",
      * )
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
      */
     private $tag;
 

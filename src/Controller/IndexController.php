@@ -13,6 +13,9 @@ class IndexController extends AbstractController
 {
     /**
      * @Route("/", name="index", methods={"GET","POST"})
+     * @param Request $request
+     * @param GifRepository $gifRepository
+     * @return Response
      */
     public function index(Request $request, GifRepository $gifRepository): Response
     {

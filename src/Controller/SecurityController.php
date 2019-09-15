@@ -13,8 +13,11 @@ class SecurityController extends AbstractController
 {
     /** @var FormFactoryInterface */
     private $formFactory;
+
     /**
      * @Route("/login", name="app_login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
