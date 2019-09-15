@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <h1>Rechercher un gif</h1>
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+        {% for gif in gifs %}
+            <div>
+                <div><img src="{{ gif.link }}"/></div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

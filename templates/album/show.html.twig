@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Album{% endblock %}
+
+{% block body %}
+    <h1>{{ album.title }}</h1>
+    {% if album.author %}
+        <span>Par : {{ album.author }}</span>
+    {% endif %}
+    <h2>Gifs Times</h2>
+    {% for gif in album.gifs %}
+        <div>
+            <div><img src="{{ gif.link }}"/>
+                {{ include('gif/_delete_form.html.twig') }}
+                <a href="{{ path('gif_addfavorite', {'id': gif.id}) }}">Favorite</a>
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <span>Oupsi</span>
+        </div>
+    {% endfor %}
+    <a href="{{ path('album_index') }}">back to list</a>
+
+    <a href="{{ path('album_edit', {'id': album.id}) }}">edit</a>
+{% endblock %}

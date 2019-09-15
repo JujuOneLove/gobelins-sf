@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Album index{% endblock %}
+
+{% block body %}
+    <h1>Album index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Nb Gifs</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for album in albums %}
+            <tr>
+                <td>{{ album.title }}</td>
+                <td>{{ album.gifs|length }}</td>
+                <td>
+                    <a href="{{ path('album_show', {'id': album.id}) }}">show</a>
+                    <a href="{{ path('album_edit', {'id': album.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h2>Mes Favs</h2>
+    {% for gif in user.favorites %}
+        <div>
+            <div><img src="{{ gif.link }}"/><a href="{{ path('gif_deletefavorite', {'id': gif.id}) }}">Delete Favorite</a>
+
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <span>Oupsi</span>
+        </div>
+    {% endfor %}
+
+    <a href="{{ path('album_new') }}">Create new</a>
+{% endblock %}

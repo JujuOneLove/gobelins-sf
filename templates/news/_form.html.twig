@@ -1,0 +1,15 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{{ form_start(form) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(form) }}
+</div>
+<div class="row">
+    <div class="col">
+        {{ form_row(form.title) }}
+    </div>
+    <div class="col">
+        {{ form_row(form.content) }}
+    </div>
+</div>
+{{ form_end(form) }}
